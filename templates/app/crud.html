@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Question Management </title>
+  <link rel="stylesheet" href="crud.css">
+</head>
+<body>
+  <div class="container">
+    <center><h1>Question Management</h1></center>
+
+    <div class="question-form">
+      <form id="question-form">
+        <div class="form-group">
+          <label for="subject">Subject:</label>
+          <input type="text" id="subject"  required>
+        </div>
+        <div class="form-group">
+          <label for="title">Title:</label>
+          <input type="text" id="title"  required>
+        </div>
+        <div class="form-group">
+          <label for="question-text">Question:</label>
+          <textarea id="question-text" rows="3" required  style="border-radius: 10px;"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="school">School:</label>
+          <input type="text" id="school"   required>
+        </div>
+        <div class="form-group">
+          <label for="file-input">Attach File:</label>
+          <input type="file" id="file-input">
+          <button type="button" class="btn btn-primary" id="download-btn" style="display: none;width: 100px;">Download</button>
+          <button type="submit" class="btn btn-primary" style="width: 100px;display: inline-block;">Save</button>
+        </div>
+       
+      </form>
+    </div>
+
+    <table id="question-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Subject</th>
+          <th>Title</th>
+          <th>Content</th>
+          <th>File</th>
+          <th>School</th>
+          <th>Date Created</th>
+          <th>Date Updated</th>
+          <th>Vote</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <script src="crud.js"></script>
+</body>
+</html>
