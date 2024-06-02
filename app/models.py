@@ -11,6 +11,10 @@ class School(models.Model):
     def __str__(self):
         return self.name
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 40cfff371b443bbb9baa776559f6494e9ec36497
 class User(User):
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
