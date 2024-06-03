@@ -1,10 +1,32 @@
 from rest_framework import serializers
-from .models import School, User, Exam
+from .models import School, User, Exam, UserExam
 from django.contrib.auth.hashers import make_password
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth.password_validation import validate_password
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.tokens import Token
+from rest_framework import serializers
+
+class ExamSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Exam
+        fields = "__all__"
+
+    def create(self, validated_data):
+        exam = Exam.objects.create(**validated_data)
+        exam.save()
+        return exam
+
+class UserExamSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserExam
+        fields = "__all__"
+
+    def create(self, validated_data):
+        user_exam = UserExam.objects.create(**validated_data)
+        user_exam.save()
+        return user_exam
+
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
@@ -14,29 +36,29 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         token['name'] = user.username
         return token
     
-class ExamSerializer(serializers.ModelSerializer):
-    school_name = serializers.CharField(source='school.name')
-    files = serializers.ListField(
-        child=serializers.FileField(), write_only=True, required=False
-    )
-    # user_name = serializers.CharField(source='user.name')
+# class ExamSerializer(serializers.ModelSerializer):
+#     school_name = serializers.CharField(source='school.name')
+#     files = serializers.ListField(
+#         child=serializers.FileField(), write_only=True, required=False
+#     )
+#     # user_name = serializers.CharField(source='user.name')
 
-    class Meta:
-        model = Exam
-        fields=[
-            'id',
-            'content',
-            'title',
-            'subject',
-            'files',
-            'user',
-            'school_name'
-        ]
+#     class Meta:
+#         model = Exam
+#         fields=[
+#             'id',
+#             'content',
+#             'title',
+#             'subject',
+#             'files',
+#             'user',
+#             'school_name'
+#         ]
     
-    def create(self, validated_data):
-        files=validated_data.pop("files", [])
-        exam = Exam.objects.create(**validated_data)
-        return exam
+#     def create(self, validated_data):
+#         files=validated_data.pop("files", [])
+#         exam = Exam.objects.create(**validated_data)
+#         return exam
 
 class SchoolSerializer(serializers.ModelSerializer):
 

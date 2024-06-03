@@ -24,19 +24,22 @@ class User(User):
         return "{}".format(self.email)
 
 class Exam(models.Model):
-    subject = models.CharField(max_length=255)
-    content = models.TextField()
-    title = models.CharField(max_length=255)
-    file = models.FileField(upload_to='uploads/exam')
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    id = models.PositiveBigIntegerField(primary_key=True)
+    subject = models.CharField(max_length=20, unique=True)
+    title = models.CharField(max_length=20, unique=True)
+    content = models.CharField(max_length=20)
+    file = models.FileField(upload_to="uploads/exam")
     school = models.ForeignKey(School, on_delete=models.CASCADE)
-    created_on = models.DateTimeField(auto_now_add=True)
-    updated_on = models.DateTimeField(auto_now=True)
-    vote = models.IntegerField(default=0)
-    deleted = models.BooleanField(default=False)
+    create_on = models.DateTimeField(auto_now_add=True)
+    update_on = models.DateTimeField(auto_now_add=True)
+    vote = models.PositiveBigIntegerField()
+    delete = models.BooleanField()
+    user_uploaded = models.ForeignKey(User, on_delete=models.CASCADE)
 
-    def __str__(self):
-        return self.title
+class UserExam:
+    exam = models.ForeignKey(Exam, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    option = models.CharField(max_length=50)
     
 class Answer(models.Model):
     content = models.TextField()
