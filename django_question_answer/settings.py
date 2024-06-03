@@ -51,6 +51,14 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+<<<<<<< HEAD
+REST_FRAMEWORK = {
+   'DEFAULT_PERMISSION_CLASSES': ( 
+       'rest_framework.permissions.IsAdminUser',
+    ),
+   
+}
+=======
 # REST_FRAMEWORK = {
 #    'DEFAULT_PERMISSION_CLASSES': ( 
 #        'rest_framework.permissions.IsAdminUser',
@@ -60,6 +68,7 @@ MIDDLEWARE = [
 #         'rest_framework.authentication.TokenAuthentication',  # Add this line
 #     ],
 # }
+>>>>>>> 40cfff371b443bbb9baa776559f6494e9ec36497
 
 ROOT_URLCONF = 'django_question_answer.urls'
 
