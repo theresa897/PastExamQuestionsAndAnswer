@@ -1,0 +1,402 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 1em 0;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1em;
+}
+
+header h1 {
+    margin: 0;
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+header nav ul li {
+    margin-left: 1em;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.hero {
+    background: url('images/exam1.jpeg') no-repeat center center/cover;
+    color: white;
+    padding: 4em 0;
+    text-align: center;
+}
+
+.hero .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1em;
+}
+
+.hero h2 {
+    margin: 0 0 1em;
+}
+
+.hero p {
+    margin: 0 0 2em;
+}
+
+.hero .btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 0.5em 2em;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.features {
+    background-color: white;
+    padding: 2em 0;
+}
+
+.features .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1em;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.features .feature {
+    flex: 1;
+    margin: 0 1em;
+}
+
+.past-questions {
+    background-color: #f9f9f9;
+    padding: 2em 0;
+}
+
+.past-questions .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1em;
+}
+
+.past-questions h2 {
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.subjects {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.subject {
+    background: white;
+    padding: 1em;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    flex: 1 1 30%;
+    margin: 1em;
+}
+
+.subject h3 {
+    margin-top: 0;
+}
+
+.subject ul {
+    list-style: none;
+    padding: 0;
+}
+
+.subject ul li {
+    margin: 0.5em 0;
+}
+
+.subject ul li a {
+    text-decoration: none;
+    color: #4CAF50;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+}
+
+footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1em;
+}
+
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    header nav ul li {
+        margin-left: 0;
+        margin-bottom: 0.5em;
+    }
+
+    .features .container, .past-questions .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .subjects {
+        flex-direction: column;
+    }
+
+    .subject {
+        width: 100%;
+    }
+}
+
+
+/** css for forms**/
+
+.form-section {
+    background-color: #f9f9f9;
+    padding: 2em 0;
+    text-align: center;
+}
+
+.form-section .container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 1em;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 2em;
+}
+
+.form-section h2 {
+    margin-top: 0;
+    margin-bottom: 1em;
+}
+
+.form-section form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-section label {
+    margin: 0.5em 0 0.2em;
+}
+
+.form-section input {
+    padding: 0.5em;
+    margin-bottom: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-section input[type="file"] {
+    padding: 0.5em 0;
+}
+
+.form-section .btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 0.5em;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.form-section .btn:hover {
+    background-color: #45a049;
+}
+
+/*******for userpage****/
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 1em 0;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1em;
+}
+
+header h1 {
+    margin: 0;
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+header nav ul li {
+    margin-left: 1em;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.user-search {
+    background-color: #f9f9f9;
+    padding: 2em 0;
+    text-align: center;
+}
+
+.user-search .container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.user-search h2 {
+    margin-top: 0;
+    margin-bottom: 1em;
+}
+
+.search-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-bar input {
+    padding: 0.5em;
+    width: 80%;
+    margin-right: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-bar button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: #45a049;
+}
+
+.user-list {
+    padding: 2em 0;
+}
+
+.user-list .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1em;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 1em;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1em;
+}
+
+.user img {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    margin-right: 1em;
+}
+
+.user-details {
+    flex: 1;
+}
+
+.user-details h3 {
+    margin-top: 0;
+    margin-bottom: 0.5em;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+}
+
+footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1em;
+}
+
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    header nav ul li {
+        margin-left: 0;
+        margin-bottom: 0.5em;
+    }
+
+    .user {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .user img {
+        margin-bottom: 1em;
+    }
+}
+
