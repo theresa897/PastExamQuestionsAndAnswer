@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - ExamPrep</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>ExamPrep Admin</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="users.html">Users</a></li>
+                    <li><a href="admin.html">Admin</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section class="admin-dashboard">
+        <div class="container">
+            <h2>Admin Dashboard</h2>
+            <div class="stats">
+                <div class="stat">
+                    <h3>Total Users</h3>
+                    <p id="total-users">100</p>
+                </div>
+                <div class="stat">
+                    <h3>Total Questions</h3>
+                    <p id="total-questions">50</p>
+                </div>
+                <div class="stat">
+                    <h3>Total Answers</h3>
+                    <p id="total-answers">200</p>
+                </div>
+            </div>
+            <div class="crud-section">
+                <h3>Manage Users</h3>
+                <form id="user-search-form" class="search-bar">
+                    <input type="text" id="user-search" placeholder="Search users...">
+                    <button type="submit">Search</button>
+                </form>
+                <form id="user-form">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                    <button type="submit">Add User</button>
+                </form>
+                <div id="users-list">
+                    <!-- List of users will be rendered here -->
+                </div>
+            </div>
+            <div class="crud-section">
+                <h3>Manage Questions</h3>
+                <form id="question-form">
+                    <label for="question">Question:</label>
+                    <input type="text" id="question" name="question" required>
+                    <button type="submit">Add Question</button>
+                </form>
+                <div id="questions-list">
+                    <!-- List of questions will be rendered here -->
+                </div>
+            </div>
+            <div class="crud-section">
+                <h3>Manage Answers</h3>
+                <form id="answer-form">
+                    <label for="answer">Answer:</label>
+                    <input type="text" id="answer" name="answer" required>
+                    <button type="submit">Add Answer</button>
+                </form>
+                <div id="answers-list">
+                    <!-- List of answers will be rendered here -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 ExamPrep. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Placeholder data
+        let users = [
+            { id: 1, name: "John Doe", questions: [1], answers: [1] },
+            { id: 2, name: "Jane Smith", questions: [2], answers: [2] }
+        ];
+        let questions = [
+            { id: 1, text: "What is 2 + 2?", userId: 1 },
+            { id: 2, text: "Explain Newton's second law.", userId: 2 }
+        ];
+        let answers = [
+            { id: 1, text: "4", questionId: 1, userId: 1 },
+            { id: 2, text: "F = ma", questionId: 2, userId: 2 }
+        ];
+
+        // Update stats
+        const updateStats = () => {
+            document.getElementById('total-users').innerText = users.length;
+            document.getElementById('total-questions').innerText = questions.length;
+            document.getElementById('total-answers').innerText = answers.length;
+        };
+
+        // Render lists
+        const renderList = (listId, items, renderItem) => {
+            const listElement = document.getElementById(listId);
+            listElement.innerHTML = '';
+            items.forEach(item => {
+                const itemElement = document.createElement('div');
+                itemElement.className = 'crud-item';
+                itemElement.innerHTML = renderItem(item);
+                listElement.appendChild(itemElement);
+            });
+        };
+
+        // Render user list
+        const renderUsers = () => {
+            renderList('users-list', users, user => `
+                <p>${user.name}</p>
+                <button onclick="editUser(${user.id})">Edit</button>
+                <button onclick="deleteUser(${user.id})">Delete</button>
+                <button onclick="viewUserDetails(${user.id})">View Details</button>
+            `);
+        };
+
+        // Render question list
+        const renderQuestions = () => {
+            renderList('questions-list', questions, question => `
+                <p>${question.text}</p>
+                <button onclick="editQuestion(${question.id})">Edit</button>
+                <button onclick="deleteQuestion(${question.id})">Delete</button>
+            `);
+        };
+
+        // Render answer list
+        const renderAnswers = () => {
+            renderList('answers-list', answers, answer => `
+                <p>${answer.text}</p>
+                <button onclick="editAnswer(${answer.id})">Edit</button>
+                <button onclick="deleteAnswer(${answer.id})">Delete</button>
+            `);
+        };
+
+        // Add user
+        document.getElementById('user-form').addEventListener('submit', event => {
+            event.preventDefault();
+            const userName = event.target.username.value;
+            users.push({ id: users.length + 1, name: userName, questions: [], answers: [] });
+            renderUsers();
+            event.target.reset();
+            updateStats();
+        });
+
+        // Add question
+        document.getElementById('question-form').addEventListener('submit', event => {
+            event.preventDefault();
+            const questionText = event.target.question.value;
+            questions.push({ id: questions.length + 1, text: questionText, userId: null });
+            renderQuestions();
+            event.target.reset();
+            updateStats();
+        });
+
+        // Add answer
+        document.getElementById('answer-form').addEventListener('submit', event => {
+            event.preventDefault();
+            const answerText = event.target.answer.value;
+            answers.push({ id: answers.length + 1, text: answerText, questionId: null, userId: null });
+            renderAnswers();
+            event.target.reset();
+            updateStats();
+        });
+
+        // Edit user
+        const editUser = id => {
+            const user = users.find(u => u.id === id);
+            const newName = prompt("Edit user name:", user.name);
+            if (newName) {
+                user.name = newName;
+                renderUsers();
+            }
+        };
+
+        // Delete user
+        const deleteUser = id => {
+            users = users.filter(u => u.id !== id);
+            renderUsers();
+            updateStats();
+        };
+
+        // View user details
+        const viewUserDetails = id => {
+            const user = users.find(u => u.id === id);
+            const userQuestions = questions.filter(q => q.userId === id);
+            const userAnswers = answers.filter(a => a.userId === id);
+
+            alert(`
+                User: ${user.name}
+                Questions: ${userQuestions.map(q => q.text).join(', ')}
+                Answers: ${userAnswers.map(a => a.text).join(', ')}
+            `);
+        };
+
+        // Edit question
+        const editQuestion = id => {
+            const question = questions.find(q => q.id === id);
+            const newText = prompt("Edit question text:", question.text);
+            if (newText) {
+                question.text = newText;
+                renderQuestions();
+            }
+        };
+
+        // Delete question
+        const deleteQuestion = id => {
+            questions = questions.filter(q => q.id !== id);
+            renderQuestions();
+            updateStats();
+        };
+
+        // Edit answer
+        const editAnswer = id => {
+            const answer = answers.find(a => a.id === id);
+            const newText = prompt("Edit answer text:", answer.text);
+            if (newText) {
+                answer.text = newText;
+                renderAnswers();
+            }
+        };
+
+        // Delete answer
+        const deleteAnswer = id => {
+            answers = answers.filter(a => a.id !== id);
+            renderAnswers();
+            updateStats();
+        };
+
+        // Search users
+        document.getElementById('user-search-form').addEventListener('submit', event => {
+            event.preventDefault();
+            const query = event.target['user-search'].value.toLowerCase();
+            const filteredUsers = users.filter(u => u.name.toLowerCase().includes(query));
+            renderList('users-list', filteredUsers, user => `
+                <p>${user.name}</p>
+                <button onclick="editUser(${user.id})">Edit</button>
+                <button onclick="deleteUser(${user.id})">Delete</button>
+                <button onclick="viewUserDetails(${user.id})">View Details</button>
+            `);
+        });
+
+        // Initial render
+        renderUsers();
+        renderQuestions();
+        renderAnswers();
+        updateStats();
+    </script>
+</body>
+</html>
