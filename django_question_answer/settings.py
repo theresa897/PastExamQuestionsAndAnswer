@@ -68,7 +68,11 @@ REST_FRAMEWORK = {
 #         'rest_framework.authentication.TokenAuthentication',  # Add this line
 #     ],
 # }
+<<<<<<< HEAD
 >>>>>>> 40cfff371b443bbb9baa776559f6494e9ec36497
+=======
+>>>>>>> b1ce08c1bf083affc37742833f736154ebe11708
+>>>>>>> be6bf1d917b260178b059697748739e3ed5d3638
 
 ROOT_URLCONF = 'django_question_answer.urls'
 

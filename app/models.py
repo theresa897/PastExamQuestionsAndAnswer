@@ -14,7 +14,11 @@ class School(models.Model):
 <<<<<<< HEAD
 =======
 
+<<<<<<< HEAD
 >>>>>>> 40cfff371b443bbb9baa776559f6494e9ec36497
+=======
+>>>>>>> b1ce08c1bf083affc37742833f736154ebe11708
+>>>>>>> be6bf1d917b260178b059697748739e3ed5d3638
 class User(User):
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
@@ -27,6 +31,21 @@ class User(User):
         return "{}".format(self.email)
 
 class Exam(models.Model):
+<<<<<<< HEAD
+    subject = models.CharField(max_length=255)
+    content = models.TextField()
+    title = models.CharField(max_length=255)
+    file = models.FileField(upload_to='uploads/exam')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    school = models.ForeignKey(School, on_delete=models.CASCADE)
+    created_on = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True)
+    vote = models.IntegerField(default=0)
+    deleted = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.title
+=======
     id = models.PositiveBigIntegerField(primary_key=True)
     subject = models.CharField(max_length=20, unique=True)
     title = models.CharField(max_length=20, unique=True)
@@ -43,6 +62,7 @@ class UserExam:
     exam = models.ForeignKey(Exam, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     option = models.CharField(max_length=50)
+>>>>>>> b1ce08c1bf083affc37742833f736154ebe11708
     
 class Answer(models.Model):
     content = models.TextField()

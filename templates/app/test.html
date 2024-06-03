@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Post List</title>
+</head>
+<body>
+    <h1>Posts</h1>
+    <ul>
+        {% csrf_token %}
+        {% for test in tests %}
+        <li>
+            <h2>{{ test.name }}</h2>
+            <p>{{ test.location }}</p>
+            <p>Created at: {{ test.created_on }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

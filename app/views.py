@@ -1,5 +1,9 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+<<<<<<< HEAD
+from django.contrib import messages
+from rest_framework import viewsets
+=======
 from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.response import Response
@@ -9,34 +13,84 @@ from rest_framework import viewsets
 <<<<<<< HEAD
 =======
 from rest_framework import serializers
+<<<<<<< HEAD
 >>>>>>> 40cfff371b443bbb9baa776559f6494e9ec36497
+=======
+>>>>>>> b1ce08c1bf083affc37742833f736154ebe11708
+>>>>>>> be6bf1d917b260178b059697748739e3ed5d3638
 from rest_framework.authentication import TokenAuthentication
 from .models import School, User, Exam, Answer
 from rest_framework.permissions import *
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework import generics
 <<<<<<< HEAD
+<<<<<<< HEAD
 from django.shortcuts import redirect
 from .serializers import RegisterSerializer, MyTokenObtainPairSerializer
 
 =======
+from rest_framework.response import Response
+from django.shortcuts import redirect
+from rest_framework.views import APIView
+from .serializers import SchoolSerializer
+>>>>>>> be6bf1d917b260178b059697748739e3ed5d3638
+=======
 from django.shortcuts import HttpResponseRedirect
 from django.contrib.sessions.backends.db import SessionStore
 from .serializers import *
+>>>>>>> b1ce08c1bf083affc37742833f736154ebe11708
 
 class SchoolCreate(generics.CreateAPIView):
     # API endpoint that allows creation of a new school
     queryset = School.objects.all(),
     serializer_class = SchoolSerializer
 
+<<<<<<< HEAD
+class SchoolList(APIView):
+    def get(self, request):
+        schools = School.objects.all()
+        serializer = SchoolSerializer(schools, many=True)
+        return Response(serializer.data)
+=======
 class SchoolList(generics.ListAPIView):
     queryset = School.objects.all()
     serializer_class = SchoolSerializer
+>>>>>>> b1ce08c1bf083affc37742833f736154ebe11708
 
 class SchoolDetail(generics.RetrieveAPIView,):
     queryset = School.objects.all()
     serializer_class = SchoolSerializer
 
+<<<<<<< HEAD
+class SchoolUpdate(generics.RetrieveUpdateAPIView):
+    queryset = School.objects.all()
+    serializer_class = SchoolSerializer
+
+
+
+
+
+
+def school_list_view(request):
+    school_list_view = SchoolList.as_view()
+    response = school_list_view(request)
+    tests = response.data
+    return render(request, 'test.html', {'tests': tests})
+        
+def index(request):
+
+    return render(request, template_name="app/index.html")
+
+
+
+
+    
+    
+
+    
+
+
+=======
 class SchoolUpdate(generics.UpdateAPIView):
     queryset = School.objects.all()
     serializer_class = SchoolSerializer
@@ -65,7 +119,10 @@ class Register(generics.CreateAPIView):
     serializer_class=RegisterSerializer
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 75858e5c432949463c59dd57c83ca4869457091e
 <<<<<<< HEAD
     def get_queryset(self):                                            # added string
         return super().get_queryset().filter(id=self.request.user.id)   # added string
@@ -74,21 +131,34 @@ class Register(generics.CreateAPIView):
     #     return super().get_queryset().filter(id=self.request.user.id)   # added string
 >>>>>>> 40cfff371b443bbb9baa776559f6494e9ec36497
 
+<<<<<<< HEAD
 >>>>>>> ff796957b686f9d756f43f353f40a988083b6596
+=======
+=======
+>>>>>>> be6bf1d917b260178b059697748739e3ed5d3638
+>>>>>>> 75858e5c432949463c59dd57c83ca4869457091e
 class UserList(generics.ListAPIView):
     queryset = User.objects.all()
     permission_classes = (AllowAny,)
     serializer_class = RegisterSerializer
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 75858e5c432949463c59dd57c83ca4869457091e
 <<<<<<< HEAD
 =======
 class ExamCreate(generics.ListCreateAPIView):
     # queryset = Exam.objects.all()
     serializer_class = ExamSerializer
     # permission_classes = [IsAuthenticated]
+<<<<<<< HEAD
 >>>>>>> ff796957b686f9d756f43f353f40a988083b6596
+=======
+=======
+>>>>>>> be6bf1d917b260178b059697748739e3ed5d3638
+>>>>>>> 75858e5c432949463c59dd57c83ca4869457091e
 
 
 # Create your views here.
@@ -159,4 +229,8 @@ class ExamDetail(generics.RetrieveAPIView,):
 class ExamUpdate(generics.RetrieveUpdateAPIView):
     queryset = Exam.objects.all()
     serializer_class = ExamSerializer        
+<<<<<<< HEAD
 >>>>>>> 40cfff371b443bbb9baa776559f6494e9ec36497
+=======
+>>>>>>> b1ce08c1bf083affc37742833f736154ebe11708
+>>>>>>> be6bf1d917b260178b059697748739e3ed5d3638
