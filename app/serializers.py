@@ -2,30 +2,24 @@
 
 
 
-from rest_framework import serializers
+
 <<<<<<< HEAD
 <<<<<<< HEAD
-from .models import School, User, Exam, UserExam
+
 =======
 =======
 >>>>>>> 75858e5c432949463c59dd57c83ca4869457091e
 <<<<<<< HEAD
-from .models import User
+
 =======
-from .models import School, User, Exam
+
 <<<<<<< HEAD
 >>>>>>> 40cfff371b443bbb9baa776559f6494e9ec36497
 <<<<<<< HEAD
 >>>>>>> ff796957b686f9d756f43f353f40a988083b6596
 =======
 =======
-
-from rest_framework.validators import UniqueValidator
-
-from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
-from rest_framework_simplejwt.tokens import Token
-
-    
+   
 
 =======
 from rest_framework import serializers
